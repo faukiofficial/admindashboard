@@ -387,6 +387,7 @@ const userSlice = createSlice({
       })
       .addCase(me.pending, (state) => {
         state.meLoading = true;
+        state.meError = null;
       })
       .addCase(me.fulfilled, (state, action) => {
         state.meLoading = false;

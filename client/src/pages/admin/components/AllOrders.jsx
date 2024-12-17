@@ -200,7 +200,7 @@ const AllOrders = () => {
                   </td>
                 </tr>
               ))
-            ) : orders.length === 0 ? (
+            ) : orders.length === 0 && getAllOrdersLoading ? (
               <tr>
                 <td colSpan={8} className="py-20 text-center text-gray-600">
                   <div className="flex flex-col items-center justify-center gap-4">
