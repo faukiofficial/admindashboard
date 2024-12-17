@@ -387,16 +387,17 @@ const userSlice = createSlice({
       })
       .addCase(me.pending, (state) => {
         state.meLoading = true;
-        state.meError = null;
       })
       .addCase(me.fulfilled, (state, action) => {
-        state.isAuthenticated = true;
-        state.user = action.payload.user;
         state.meLoading = false;
+        state.user = action.payload.user;
+        state.isAuthenticated = true;
       })
       .addCase(me.rejected, (state, action) => {
         state.meError = action.error.message;
         state.meLoading = false;
+        state.user = null;
+        state.isAuthenticated = false;
       })
       .addCase(getAllUsers.pending, (state) => {
         state.getAllUsersLoading = true;

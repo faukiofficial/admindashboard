@@ -18,27 +18,14 @@ import AllUsers from "./pages/admin/components/AllUsers";
 import MyProfile from "./pages/admin/components/myProfile";
 import AuthLayout from "./pages/auth/AuthLayout";
 
-export const Loading = () => {
-  return (
-    <div className="fixed inset-0 bg-white/80 flex justify-center items-center z-[1000]">
-      <div className="rectangular-loader">
-        <span>Eduwork</span>
-      </div>
-    </div>
-  );
-};
 
 function App() {
   const dispatch = useDispatch();
-  const { user, meLoading } = useSelector((state) => state.user);
+  const { user } = useSelector((state) => state.user);
 
   useEffect(() => {
     dispatch(me());
   }, [dispatch]);
-
-  if (meLoading) {
-    return <Loading />;
-  }
 
   return (
     <BrowserRouter>
