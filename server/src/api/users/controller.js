@@ -207,8 +207,18 @@ exports.loginUser = async (req, res) => {
 // logout
 exports.logout = async (req, res) => {
   try {
-    res.clearCookie("token");
-    res.clearCookie("refreshtoken");
+    res.clearCookie("token", {
+      httpOnly: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+      secure: process.env.NODE_ENV === "production",
+      path: "/",
+    });
+    res.clearCookie("refreshtoken", {
+      httpOnly: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+      secure: process.env.NODE_ENV === "production",
+      path: "/",
+    });
 
     res.status(200).json({
       success: true,
