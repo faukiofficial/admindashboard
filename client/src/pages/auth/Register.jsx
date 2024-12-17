@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaEye, FaEyeSlash, FaSpinner } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../../redux/user/userSlice";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -17,6 +17,13 @@ const Register = () => {
 
   const dispatch = useDispatch();
   const { registerLoading } = useSelector((state) => state.user);
+
+  
+  const location = useLocation();
+
+  useEffect(() => {
+    document.title = "Register | Eduwork Marketplace";
+  }, [location]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });

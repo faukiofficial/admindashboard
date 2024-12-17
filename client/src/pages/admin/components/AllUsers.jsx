@@ -6,11 +6,19 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { FaRegSadTear, FaSort, FaSortDown, FaSortUp } from "react-icons/fa";
 import Pagination from "../../../components/Paginations";
 import { getAllUsers } from "../../../redux/user/userSlice";
+import { useLocation } from "react-router-dom";
 
 const AllUsers = () => {
   const dispatch = useDispatch();
   const { getAllUsersLoading, users, totalUsers, currentPage, totalPages } =
     useSelector((state) => state.user);
+
+    
+  const location = useLocation();
+
+  useEffect(() => {
+    document.title = "All Users | Eduwork Marketplace";
+  }, [location]);
 
   const [page, setPage] = useState(
     localStorage.getItem("page3") || currentPage || 1

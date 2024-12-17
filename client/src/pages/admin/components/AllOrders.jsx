@@ -5,11 +5,19 @@ import formatDate from "../../../utils/formatDate";
 import { FaRegSadTear, FaSort, FaSortDown, FaSortUp } from "react-icons/fa";
 import Skeleton from "react-loading-skeleton";
 import Pagination from "../../../components/Paginations";
+import { useLocation } from "react-router-dom";
 
 const AllOrders = () => {
   const dispatch = useDispatch();
   const { orders, getAllOrdersLoading, currentPage, totalPages, totalOrders } =
     useSelector((state) => state.order);
+
+  
+    const location = useLocation();
+
+    useEffect(() => {
+      document.title = "All Orders | Eduwork Marketplace";
+    }, [location]);
 
   const [page, setPage] = useState(
     localStorage.getItem("page2") || currentPage || 1

@@ -9,6 +9,7 @@ import {
   updateUserInfo,
 } from "../../../redux/user/userSlice";
 import ConfirmationModal from "../../../components/ConfirmationModal";
+import { useLocation } from "react-router-dom";
 
 const MyProfile = () => {
   const dispatch = useDispatch();
@@ -46,6 +47,13 @@ const MyProfile = () => {
 
   const [changePasswordActivateModal, setChangePasswordActivateModal] =
     useState(false);
+
+  
+    const location = useLocation();
+
+    useEffect(() => {
+      document.title = "My Profile | Eduwork Marketplace";
+    }, [location]);
 
   useEffect(() => {
     if (changeEmailToken) {

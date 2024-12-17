@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import formatDate from "../../../utils/formatDate";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -29,6 +29,13 @@ const AllProducts = () => {
   const { getAllCategoriesLoading, categories } = useSelector(
     (state) => state.category
   );
+
+  
+  const location = useLocation();
+
+  useEffect(() => {
+    document.title = "All Products | Eduwork Marketplace";
+  }, [location]);
 
   const [page, setPage] = useState(
     localStorage.getItem("page") || currentPage || 1

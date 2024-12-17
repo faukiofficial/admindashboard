@@ -8,7 +8,7 @@ import {
   getSingleCategory,
   updateCategory,
 } from "../../../redux/category/categorySlice";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import ConfirmationModal from "../../../components/ConfirmationModal";
 
@@ -28,6 +28,12 @@ const Categories = () => {
     addCategoryLoading,
     deleteCategoryLoading,
   } = useSelector((state) => state.category);
+  
+  const location = useLocation();
+
+  useEffect(() => {
+    document.title = "Categories | Eduwork Marketplace";
+  }, [location]);
 
   const getCategory = useCallback(
     async (id) => {

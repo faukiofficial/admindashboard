@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import {
   getSingleProduct,
   updateProduct,
@@ -27,6 +27,13 @@ const EditProduct = () => {
     (state) => state.product
   );
   const { categories } = useSelector((state) => state.category);
+
+  
+  const location = useLocation();
+
+  useEffect(() => {
+    document.title = "Edit Product | Eduwork Marketplace";
+  }, [location]);
 
   const getProduct = useCallback(
     async (id) => {

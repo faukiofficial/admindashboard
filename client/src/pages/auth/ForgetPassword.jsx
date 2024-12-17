@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { FaSpinner } from "react-icons/fa";
 import { forgetPassword } from "../../redux/user/userSlice";
@@ -10,6 +10,13 @@ const ForgetPassword = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const {forgetPasswordLoading} = useSelector((state) => state.user);
+
+  
+  const location = useLocation();
+
+  useEffect(() => {
+    document.title = "Forget Password | Eduwork Marketplace";
+  }, [location]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaEye, FaEyeSlash, FaSpinner } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../redux/user/userSlice";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -12,6 +12,13 @@ const Login = () => {
 
   const dispatch = useDispatch();
   const { loginLoading } = useSelector((state) => state.user);
+
+  
+  const location = useLocation();
+
+  useEffect(() => {
+    document.title = "Login | Eduwork Marketplace";
+  }, [location]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });

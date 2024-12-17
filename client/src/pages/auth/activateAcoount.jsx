@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { activateUser } from "../../redux/user/userSlice";
 import { FaSpinner } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const ActivateAccount = () => {
   const [code, setCode] = useState(["", "", "", ""]);
@@ -15,6 +15,12 @@ const ActivateAccount = () => {
   const { activateToken, activateLoading, activateError } = useSelector(
     (state) => state.user
   );
+
+  const location = useLocation();
+
+  useEffect(() => {
+    document.title = "Activate Account | Eduwork Marketplace";
+  }, [location]);
 
   // Handle input change
   const handleChange = (value, index) => {

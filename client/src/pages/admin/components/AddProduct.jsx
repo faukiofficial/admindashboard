@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { addProduct } from "../../../redux/product/productSlice";
 import { FaSpinner } from "react-icons/fa";
 import Select from "react-select";
@@ -18,6 +18,13 @@ const AddProduct = () => {
   const dispatch = useDispatch();
   const { addProductLoading } = useSelector((state) => state.product);
   const { categories } = useSelector((state) => state.category);
+
+  
+  const location = useLocation();
+
+  useEffect(() => {
+    document.title = "Add Product | Eduwork Marketplace";
+  }, [location]);
 
   useEffect(() => {
     dispatch(getAllCategories());

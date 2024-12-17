@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FaSpinner } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { resetPasswordActivation } from "../../redux/user/userSlice";
 
 const ResetPasswordActivation = () => {
@@ -16,6 +16,13 @@ const ResetPasswordActivation = () => {
   const { resetPasswordActicationLoading, fogertPasswordToken, resetPasswordActicationError } = useSelector(
     (state) => state.user
   );
+
+  
+  const location = useLocation();
+
+  useEffect(() => {
+    document.title = "Reset Password Activation | Eduwork Marketplace";
+  }, [location]);
 
   // Handle input change for activation code
   const handleCodeChange = (value, index) => {
