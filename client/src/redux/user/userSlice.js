@@ -390,13 +390,13 @@ const userSlice = createSlice({
         state.meError = null;
       })
       .addCase(me.fulfilled, (state, action) => {
-        state.meLoading = false;
-        state.user = action.payload.user;
         state.isAuthenticated = true;
+        state.user = action.payload.user;
+        state.meLoading = false;
       })
       .addCase(me.rejected, (state, action) => {
-        state.meLoading = false;
         state.meError = action.error.message;
+        state.meLoading = false;
       })
       .addCase(getAllUsers.pending, (state) => {
         state.getAllUsersLoading = true;
