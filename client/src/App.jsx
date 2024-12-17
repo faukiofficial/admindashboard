@@ -44,6 +44,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Navigate to="/auth/login" replace />} />
+        <Route path="/auth" element={<Navigate to="/auth/login" replace />} />
+        <Route path="/admin" element={<Navigate to="/admin/products" replace />} />
 
         {/* Auth Routes */}
         <Route

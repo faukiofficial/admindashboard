@@ -15,12 +15,11 @@ import { logoutUser } from "../../redux/user/userSlice";
 const Sidebar = ({ user }) => {
   const dispatch = useDispatch();
   const { logoutLoading } = useSelector((state) => state.user);
-  const navigate = useNavigate();
 
   const handleLogout = async () => {
     const resultAction = await dispatch(logoutUser());
     if (resultAction.meta.requestStatus === "fulfilled") {
-      navigate("/auth/login");
+      window.location.href = "/auth/login";
     }
   };
 
