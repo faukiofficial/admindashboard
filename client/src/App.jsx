@@ -46,17 +46,22 @@ function App() {
         <Route path="/" element={<Navigate to="/auth/login" replace />} />
 
         {/* Auth Routes */}
-        <Route path="/auth/*" element={<AuthRoute />}>
-          <Route path="" element={<AuthLayout />}>
-            <Route path="login" element={<Login />} />
-            <Route path="register" element={<Register />} />
-            <Route path="activate-account" element={<ActivateAccount />} />
-            <Route path="forget-password" element={<ForgetPassword />} />
-            <Route
-              path="reset-password-activation"
-              element={<ResetPasswordActivation />}
-            />
-          </Route>
+        <Route
+          path="/auth/*"
+          element={
+            <AuthRoute>
+              <AuthLayout />
+            </AuthRoute>
+          }
+        >
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+          <Route path="activate-account" element={<ActivateAccount />} />
+          <Route path="forget-password" element={<ForgetPassword />} />
+          <Route
+            path="reset-password-activation"
+            element={<ResetPasswordActivation />}
+          />
         </Route>
 
         {/* Admin Routes */}
