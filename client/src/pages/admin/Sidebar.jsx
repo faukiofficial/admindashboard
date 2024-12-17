@@ -13,13 +13,14 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { logoutUser } from "../../redux/user/userSlice";
 
 const Sidebar = ({ user }) => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { logoutLoading } = useSelector((state) => state.user);
 
   const handleLogout = async () => {
     const resultAction = await dispatch(logoutUser());
     if (resultAction.meta.requestStatus === "fulfilled") {
-      window.location.href = "/auth/login";
+      navigate("/auth/login")
     }
   };
 
@@ -49,8 +50,13 @@ const Sidebar = ({ user }) => {
       </div>
       <div className="p-4 border-b border-green-500">
         <div className="flex items-center">
-          <div className="mr-2 bg-green-200 rounded-full w-8 h-8 flex items-center justify-center">{getUserTwoFirstWordInitial()}</div>
-          <span className="mr-1">Hello,</span><Link to="/admin/profile" className="font-bold hover:underline">{getUserFirstName()}</Link>
+          <div className="mr-2 bg-green-200 rounded-full w-8 h-8 flex items-center justify-center">
+            {getUserTwoFirstWordInitial()}
+          </div>
+          <span className="mr-1">Hello,</span>
+          <Link to="/admin/profile" className="font-bold hover:underline">
+            {getUserFirstName()}
+          </Link>
         </div>
       </div>
       <nav className="flex-1 p-4 space-y-4">

@@ -8,6 +8,8 @@ const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
 
+  const navigate = useNavigate()
+
   const dispatch = useDispatch();
   const { loginLoading } = useSelector((state) => state.user);
 
@@ -21,7 +23,7 @@ const Login = () => {
     const resultAction = await dispatch(loginUser(formData));
 
     if (resultAction.meta.requestStatus === "fulfilled") {
-      window.location.href = "/admin/products";
+      navigate("/admin/products")
       setFormData({ email: "", password: "" });
     }
   };
