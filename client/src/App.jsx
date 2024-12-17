@@ -43,18 +43,11 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Redirect root to login */}
         <Route path="/" element={<Navigate to="/auth/login" replace />} />
 
         {/* Auth Routes */}
-        <Route
-          path="/auth/*"
-          element={
-            <AuthRoute>
-              <AuthLayout />
-            </AuthRoute>
-          }
-        >
+        <Route path="/auth/*" element={<AuthRoute />}>
+          <Route path="" element={<AuthLayout />}>
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
             <Route path="activate-account" element={<ActivateAccount />} />
@@ -63,25 +56,21 @@ function App() {
               path="reset-password-activation"
               element={<ResetPasswordActivation />}
             />
+          </Route>
         </Route>
 
         {/* Admin Routes */}
-        <Route
-          path="/admin/*"
-          element={
-            <PrivateRoute meLoading={meLoading}>
-              <AdminDashboard user={user} />
-            </PrivateRoute>
-          }
-        >
-          <Route path="products" element={<AllProducts />} />
-          <Route path="add-product" element={<AddProduct />} />
-          <Route path="edit-product/:id" element={<EditProduct />} />
-          <Route path="categories" element={<Categories />} />
-          <Route path="categories/:id" element={<Categories />} />
-          <Route path="orders" element={<AllOrders />} />
-          <Route path="users" element={<AllUsers />} />
-          <Route path="profile" element={<MyProfile />} />
+        <Route path="/admin/*" element={<PrivateRoute />}>
+          <Route path="" element={<AdminDashboard user={user} />}>
+            <Route path="products" element={<AllProducts />} />
+            <Route path="add-product" element={<AddProduct />} />
+            <Route path="edit-product/:id" element={<EditProduct />} />
+            <Route path="categories" element={<Categories />} />
+            <Route path="categories/:id" element={<Categories />} />
+            <Route path="orders" element={<AllOrders />} />
+            <Route path="users" element={<AllUsers />} />
+            <Route path="profile" element={<MyProfile />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
