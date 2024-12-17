@@ -27,13 +27,13 @@ export const PrivateRoute = ({ children }) => {
   };
   
   export const AuthRoute = ({ children }) => {
-    const { isAuthenticated, meLoading } = useSelector((state) => state.user);
+    const { isAuthenticated, meLoading, user } = useSelector((state) => state.user);
     
     if (meLoading) {
       return <Loading />;
     }
 
-    if (isAuthenticated && !meLoading) {
+    if (isAuthenticated && !meLoading && user) {
       return <Navigate to="/admin/products" replace />;
     }
     return <>{children}</>;
