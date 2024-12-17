@@ -11,8 +11,6 @@ const Login = () => {
   const dispatch = useDispatch();
   const { loginLoading } = useSelector((state) => state.user);
 
-  const navigate = useNavigate();
-
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -23,7 +21,7 @@ const Login = () => {
     const resultAction = await dispatch(loginUser(formData));
 
     if (resultAction.meta.requestStatus === "fulfilled") {
-      navigate("/admin/products");
+      window.location.href = "/admin/products";
       setFormData({ email: "", password: "" });
     }
   };
