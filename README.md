@@ -6,7 +6,7 @@ The backend is built using Express.js, with Mongoose as the database ORM, and Js
 The frontend is developed using React.js, with Vite as the build tool. It includes state management with @reduxjs/toolkit, and libraries for notifications (react-hot-toast), icons (react-icons), loading skeletons (react-loading-skeleton), and dropdowns (react-select). Styling is handled using Tailwind CSS, ensuring a responsive and modern user interface.
 
 #### Demo
-[Klik this link to see the demo](https://adminedu.onrender.com)
+[Click to see the demo](https://adminedu.onrender.com)
 
 ## Run Locally
 
